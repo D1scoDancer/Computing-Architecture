@@ -28,7 +28,7 @@ section '.data' data readable writable
 
 section '.idata' import readable
         library kernel, 'kernel32.dll',\
-                msvcer, 'msvcrt.dll'
+                msvcrt, 'msvcrt.dll'
 
         import kernel,\
                ExitProcess, 'ExitProcess'
