@@ -40,8 +40,8 @@ main:
         push strEmptyLine
         call [printf]
 
-        mov ebx, vecOut
-        call VectorOutput
+        ;mov ebx, vecOut
+        ;call VectorOutput
 ;end
         call finish
 ;1-----------------------------------------------------------------------
@@ -101,18 +101,22 @@ changeLoop:
         cmp ecx, [vec_size]
         je endChange
 
-        cmp [eax], word 5
+        cmp [eax], dword 5
         jle notMore5
 ;if a[i]>5
         mov ebx, eax
-        add [ebx],byte 5
+        add [ebx],dword 5
         jmp littleEnd
 notMore5:
-        cmp [eax], word -5
-        jge littleEnd
+        cmp [eax], dword -5
+        jge between
 ;if a[i]<-5
         mov ebx, eax
-        sub [ebx], word 5
+        sub [ebx], dword 5
+        jmp littleEnd
+between:
+        mov [eax], dword 0
+        mov ebx, eax
         jmp littleEnd
 littleEnd:
         add eax, 4
