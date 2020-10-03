@@ -29,7 +29,6 @@ main:
 ;input
         call VectorInput
 ;operations
-        int3
         call VectorChanger
 ;output
         push strEmptyLine
@@ -105,15 +104,15 @@ changeLoop:
         cmp [eax], word 5
         jle notMore5
 ;if a[i]>5
-        mov [ebx], eax
-        add [ebx], word 5
+        mov ebx, eax
+        add [ebx],byte 5
         jmp littleEnd
 notMore5:
         cmp [eax], word -5
         jge littleEnd
 ;if a[i]<-5
-        mov [ebx], eax
-        sub [ebx], byte 5
+        mov ebx, eax
+        sub [ebx], word 5
         jmp littleEnd
 littleEnd:
         add eax, 4
