@@ -20,28 +20,26 @@ section '.data' data readable writable
         vecIn        rd 100
         vecOut       rd 100
         NULL = 0
-        FIVE dd 5
-        NFIVE dd -5
 
 
 section '.code' code executable readable
 main:
 ;input
         call VectorInput
-;operations
-        call VectorChanger
-;output
+;output1
         push strEmptyLine
         call [printf]
 
         mov ebx, vecIn
         call VectorOutput
-
+;operations
+        call VectorChanger
+;output2
         push strEmptyLine
         call [printf]
 
-        ;mov ebx, vecOut
-        ;call VectorOutput
+        mov ebx, vecIn
+        call VectorOutput
 ;end
         call finish
 ;1-----------------------------------------------------------------------
