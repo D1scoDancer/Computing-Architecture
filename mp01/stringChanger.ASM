@@ -1,3 +1,4 @@
+; micro project #1 for Computing-Architecture; Shulikov Aleksey 192; var #28
 format PE console
 
 entry start
@@ -6,12 +7,8 @@ include 'win32a.inc'
 
 section '.data' data readable writable
 
-
 section '.code' code executable readable
         start:
-
-
-
 
 section '.idata' import readable writable
         library kernel, 'kernel32.dll',\
