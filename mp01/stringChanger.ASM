@@ -22,7 +22,7 @@ input:
         push line
         push strScanString
         call [scanf]
-        ;add esp, 8
+        add esp, 8
 
 output:
         push line
