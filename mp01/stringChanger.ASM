@@ -7,9 +7,9 @@ include 'win32a.inc'
 
 section '.data' data readable writable
         strIntro db 'Enter your line ', 10, 0
-        strScanString db '%s', 10
+        strScanString db '%s', 0
 
-        line rb 100h
+        line db ?
 
 section '.code' code executable readable
 start:
@@ -17,17 +17,20 @@ start:
 input:
         push strIntro
         call [printf]
-        add esp, 4
 
         push line
         push strScanString
         call [scanf]
-        add esp, 8
+
+changer:
+        mov eax, line
+        sub eax, line -1
+        push eax
+        call [printf]
 
 output:
-        push line
-        call [printf]
-        add esp, 4
+        ;push line
+        ;call [printf]
 
 finish:
         call [getch]
