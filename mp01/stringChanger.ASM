@@ -9,11 +9,11 @@ section '.data' data readable writable
         strIntro db 'Enter your line ', 10, 0
         strScanString db '%s', 0
 
-        line db ?
+        line dd 0
 
 section '.code' code executable readable
 start:
-        ;int3
+
 input:
         push strIntro
         call [printf]
@@ -23,14 +23,12 @@ input:
         call [scanf]
 
 changer:
-        mov eax, line
-        sub eax, line -1
-        push eax
-        call [printf]
+        mov eax, [line]
+        add eax, 8
 
 output:
-        ;push line
-        ;call [printf]
+        push line
+        call [printf]
 
 finish:
         call [getch]
